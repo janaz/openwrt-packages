@@ -1,0 +1,16 @@
+diff -u fdupes-1.40/Makefile fdupes-1.40-patch/Makefile
+--- fdupes-1.40/Makefile	2001-03-15 13:49:11.000000000 +1100
++++ fdupes-1.40-patch/Makefile	2012-11-18 16:55:15.799849226 +1100
+@@ -35,11 +35,9 @@
+ #####################################################################
+ 
+ fdupes: fdupes.c md5/md5.c	
+-	gcc fdupes.c md5/md5.c -Wall -o fdupes -DVERSION=\"$(VERSION)\" $(EXTERNAL_MD5) $(EXPERIMENTAL_RBTREE)
++	$(CC) fdupes.c md5/md5.c -Wall -o fdupes -DVERSION=\"$(VERSION)\"
+ 
+ install: fdupes
+-	cp fdupes $(INSTALLDIR)
+-	cp fdupes.1 $(MANPAGEDIR)/man1
+ 
+ tarball: clean
+ 	tar --directory=.. -c -z -v -f ../fdupes-$(VERSION).tar.gz fdupes-$(VERSION)
